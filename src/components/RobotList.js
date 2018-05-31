@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import SingleRobot from '../components/SingleRobot';
 
-class RobotList extends Component {
-  render () {
-    let robotList = <p>Loading robots! Please wait...</p>
-    if (this.props.robots.length) {
-      robotList = this.props.robots.map((robot, index) => {
-                  return (
-                    <SingleRobot
-                      key={this.props.robots[index].id}
-                      id={this.props.robots[index].id}
-                      name={this.props.robots[index].name}
-                      email={this.props.robots[index].email} />
-                  )
-                });
-    }
-
-    return (
-      <div>
-        {robotList}
-      </div>
-    );
+const robotList = (props) => {
+  let robotList = <p>Loading robots! Please wait...</p>
+  if (props.robots.length) {
+    robotList = props.robots.map((robot, index) => {
+                return (
+                  <SingleRobot
+                    key={props.robots[index].id}
+                    id={props.robots[index].id}
+                    name={props.robots[index].name}
+                    email={props.robots[index].email} />
+                )
+              });
   }
+
+  return (
+    <div>
+      {robotList}
+    </div>
+  );
 }
 
 
-export default RobotList;
+export default robotList;

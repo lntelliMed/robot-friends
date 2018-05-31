@@ -30,7 +30,7 @@ class HomePage extends Component {
     console.log(this.state.robots)
     return (
       <div className="tc">
-        <h1>RoboFriends</h1>
+        <h1 className="f1" >RoboFriends</h1>
         <SearchBox searchChangeHandler={this.searchChangeHandler} />
         <RobotList robots={filteredRobots}/>
       </div>
