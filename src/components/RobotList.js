@@ -1,24 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import Card from '../components/Card';
-import * as actions from '../store/actions';
+import SingleRobot from '../components/SingleRobot';
 
-class CardList extends Component {
-  state = {
-    robots: []
-  }
-
-  componentDidMount () {
-    this.props.onInitRobots();
-  }
-
+class RobotList extends Component {
   render () {
     let robotList = <p>Loading robots! Please wait...</p>
     if (this.props.robots.length) {
       robotList = this.props.robots.map((robot, index) => {
                   return (
-                    <Card
+                    <SingleRobot
                       key={this.props.robots[index].id}
                       id={this.props.robots[index].id}
                       name={this.props.robots[index].name}
@@ -35,16 +25,5 @@ class CardList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    robots: state.robotGenerator.robots
-  }
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onInitRobots: () => dispatch(actions.fetchRobots())
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardList);
+export default RobotList;

@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import 'tachyons';
 
 import './index.css';
-import CardList from './containers/CardList';
+import App from './App';
 import robotGeneratorReducer from './store/reducers/robotGenerator';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -20,7 +20,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 const app = (
   <Provider store={store} >
     <BrowserRouter>
-      <CardList />
+      <App />
     </BrowserRouter>
   </Provider>
 );
