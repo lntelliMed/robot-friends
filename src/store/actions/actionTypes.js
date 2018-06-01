@@ -1,1 +1,2 @@
 export const FETCH_ROBOTS = 'FETCH_ROBOTS';
+export const SET_SEARCH_FIELD = 'SET_SEARCH_FIELD';

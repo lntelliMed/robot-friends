@@ -17,3 +17,10 @@ export const initRobots = () => {
       .catch(err => console.error("Something went wront! " + err.message));
   }
 };
+
+export const setSearchField = (searchField) => {
+  return {
+    type: actionTypes.SET_SEARCH_FIELD,
+    searchField
+  }
+};
