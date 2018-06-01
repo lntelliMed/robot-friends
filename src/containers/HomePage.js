@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import SearchBox from '../components/SearchBox';
 import RobotList from '../components/RobotList';
+import Scroll from '../components/Scroll';
 import * as actions from '../store/actions';
 
 class HomePage extends Component {
@@ -21,15 +22,21 @@ class HomePage extends Component {
   }
 
   render () {
-    const filteredRobots = this.props.robots.filter(robot => {
-      return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
-    });
+    let robotList = <h2>Loading robots! Please wait...</h2>
+    if (this.props.robots.length) {
+      const filteredRobots = this.props.robots.filter(robot => {
+        return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+      });
+      robotList = <RobotList robots={filteredRobots} />;
+    }
 
     return (
       <div className="tc">
         <h1 className="f1" >RoboFriends</h1>
         <SearchBox searchChangeHandler={this.searchChangeHandler} />
-        <RobotList robots={filteredRobots}/>
+        <Scroll>
+          {robotList}
+        </Scroll>
       </div>
     );
   }
