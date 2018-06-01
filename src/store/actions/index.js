@@ -1,3 +1,3 @@
 export {
-  fetchRobots
+  initRobots
 } from './robotGenerator';

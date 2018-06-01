@@ -15,7 +15,6 @@ class HomePage extends Component {
   }
 
   searchChangeHandler = (event) => {
-    console.log(event.target.value)
     this.setState({
       searchField: event.target.value
     });
@@ -26,8 +25,6 @@ class HomePage extends Component {
       return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
     });
 
-    console.log(filteredRobots)
-    console.log(this.state.robots)
     return (
       <div className="tc">
         <h1 className="f1" >RoboFriends</h1>
@@ -46,7 +43,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitRobots: () => dispatch(actions.fetchRobots())
+    onInitRobots: () => dispatch(actions.initRobots())
   }
 };
 

@@ -9,8 +9,8 @@ class App extends Component {
   render () {
     return (
       <Switch>
-        <Route path="/robots" component={HomePage} />
-        <Redirect to="/robots" />
+        <Route path="/robot-friends" component={HomePage} />
+        <Redirect to="/robot-friends" />
       </Switch>
     );
   }
