@@ -9,11 +9,13 @@ import 'tachyons';
 
 import './index.css';
 import App from './App';
-import robotGeneratorReducer from './store/reducers/robotGenerator';
+import generateRobotsReducer from './store/reducers/generateRobots';
+import searchRobotsReducer from './store/reducers/searchRobots';
 import registerServiceWorker from './registerServiceWorker';
 
 const rootReducer = combineReducers({
-  robotGenerator: robotGeneratorReducer
+  generateRobots: generateRobotsReducer,
+  searchRobots: searchRobotsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

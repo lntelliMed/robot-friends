@@ -14,8 +14,14 @@ class HomePage extends Component {
   }
 
   render () {
-    const { robots, searchField, onSearchFieldChange } = this.props;
-    let robotList = <h2>Loading robots! Please wait...</h2>
+    const { robots, searchField, onSearchFieldChange, isPending, error } = this.props;
+    let robotList = '';
+
+    if (isPending) {
+      robotList = <h2>Loading robots! Please wait...</h2>;
+    } else if (error) {
+      robotList = <h2>Something went wrong!</h2>;
+    }
 
     if (robots.length) {
       const filteredRobots = robots.filter(robot => {
@@ -40,8 +46,10 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    robots: state.robotGenerator.robots,
-    searchField: state.robotGenerator.searchField
+    robots: state.generateRobots.robots,
+    isPending: state.generateRobots.isPending,
+    error: state.generateRobots.error,
+    searchField: state.searchRobots.searchField
   }
 };
 

@@ -1,4 +1,7 @@
 export {
-  initRobots,
+  initRobots
+} from './generateRobots';
+
+export {
   setSearchField
-} from './robotGenerator';
+} from './searchRobots';
