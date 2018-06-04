@@ -20,6 +20,7 @@ jobs:
      steps:
        - checkout
        - run: echo "Deploying!"
+       - run: npm install
        - run: npm run deploy
 workflows:
   version: 2
