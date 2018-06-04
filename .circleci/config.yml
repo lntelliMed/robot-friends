@@ -14,19 +14,18 @@ jobs:
        - checkout
        - run: npm install
        - run: npm run test
-    deploy:
+   wrapup:
      docker:
        - image: circleci/node:8.9
      steps:
        - checkout
-       - run: npm install
-       - run: npm run deploy
+       - run: echo "Starting testing!"
 workflows:
   version: 2
-  build-test-deploy:
+  build-test:
     jobs:
       - build
-      - test
-      - deploy:
+      - wrapup
+      - test:
           requires:
-            - test
+            - wrapup
