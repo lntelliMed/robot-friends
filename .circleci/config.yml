@@ -5,6 +5,7 @@ jobs:
        - image: circleci/node:8.9
      steps:
        - checkout
+       - run: echo "Building project.."
        - run: npm install
        - run: CI=true npm run build
    test:
@@ -12,6 +13,7 @@ jobs:
        - image: circleci/node:8.9
      steps:
        - checkout
+       - run: echo "Testing project.."
        - run: npm install
        - run: npm run test
     deploy:
@@ -19,6 +21,7 @@ jobs:
        - image: circleci/node:8.9
      steps:
        - checkout
+       - run: echo "Deploying project.."
        - run: npm install
        - run: npm run deploy
 workflows:
