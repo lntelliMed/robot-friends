@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import SearchBox from '../components/SearchBox';
-import RobotList from '../components/RobotList';
-import Scroll from '../components/Scroll';
-import ErrorBoundary from '../components/ErrorBoundary';
-import * as actions from '../store/actions';
+import SearchBox from "../components/SearchBox";
+import RobotList from "../components/RobotList";
+import Header from "../components/Header";
+import Scroll from "../components/Scroll";
+import ErrorBoundary from "../components/ErrorBoundary";
+import * as actions from "../store/actions";
 
 class HomePage extends Component {
-
-  componentDidMount () {
+  componentDidMount() {
     this.props.onInitRobots();
   }
 
-  render () {
-    const { robots, searchField, onSearchFieldChange, isPending, error } = this.props;
-    let robotList = '';
+  render() {
+    const {
+      robots,
+      searchField,
+      onSearchFieldChange,
+      isPending,
+      error
+    } = this.props;
+    let robotList = "";
 
     if (isPending) {
       robotList = <h2>Loading robots! Please wait...</h2>;
@@ -32,12 +38,10 @@ class HomePage extends Component {
 
     return (
       <div className="tc">
-        <h1 className="f1" >RoboFriends</h1>
+        <Header />
         <SearchBox searchChangeHandler={onSearchFieldChange} />
         <Scroll>
-          <ErrorBoundary>
-            {robotList}
-          </ErrorBoundary>
+          <ErrorBoundary>{robotList}</ErrorBoundary>
         </Scroll>
       </div>
     );
@@ -50,14 +54,18 @@ const mapStateToProps = state => {
     isPending: state.generateRobots.isPending,
     error: state.generateRobots.error,
     searchField: state.searchRobots.searchField
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onInitRobots: () => dispatch(actions.initRobots()),
-    onSearchFieldChange: (event) => dispatch(actions.setSearchField(event.target.value))
-  }
+    onSearchFieldChange: event =>
+      dispatch(actions.setSearchField(event.target.value))
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);
