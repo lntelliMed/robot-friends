@@ -11,8 +11,7 @@ class MainPage extends Component {
     this.props.onInitRobots();
   }
 
-  filterRobots = () => {
-    const { robots, searchField } = this.props;
+  filterRobots = (robots, searchField) => {
     return robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
